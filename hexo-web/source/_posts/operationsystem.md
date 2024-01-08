@@ -39,7 +39,7 @@ Thread: Cars driving on the highways
 
 Each car has its own destination (task) and driving path (execution sequence), but they share the resources of the highway (such as lanes, traffic lights, etc.).
 
-### Thread and Porcess switching(线程切换)
+### Thread and Process switching(线程切换)
 
 进程提供了一个隔离和资源管理的环境.
 
@@ -58,6 +58,14 @@ Multiple threads sharing processes
 Theads isolation
 
 > > Different roads (processes) are isolated from each other. A traffic accident on one road will not directly affect another road, similar to a process crash that usually does not directly affect another independent process.
+
+> 想象一个大型公司，这个公司有许多不同的部门（进程），每个部门负责不同的任务。公司的总部（操作系统）分配给这些部门资源（比如资金、办公空间）并监督它们的总体运作。
+>
+> 部门（进程）：每个部门有自己的空间和资源。部门负责其内部的具体运作，如分配工作、管理内部资源。总部负责监督这些部门，决定哪个部门被开设、哪个需要关闭。
+>
+> 小组或团队（线程）：每个部门内部有不同的小组或团队。这些小组共享部门的资源，如办公设备、预算等。小组的日常管理（谁负责哪个项目，任务的分配等）通常由部门内部决定，而不是由总部直接管理。在这个类比中，操作系统就像公司的总部，它管理着整个公司的大局，并直接对部门（进程）进行监督。
+>
+> 而部门内部如何运作，特别是如何在其成员（线程）间分配任务和资源，这更多的是部门内部的事情，总部不会过多干预。这就类似于操作系统管理进程，而进程内部管理自己的线程。
 
 ## Coroutine(协程)
 

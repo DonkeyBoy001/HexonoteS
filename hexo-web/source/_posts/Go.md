@@ -2517,10 +2517,163 @@ func main() {
 >
 >  After the sender's Go protocol completes sending, it closes the channel, indicating that no new data will be sent.
 
-#### 特殊类型
+## 2023.12.17
 
-##### 指针
+#### Special types
 
-##### 接口 
+##### Pointer 指针
+
+The memory address used to point to another variable.
+
+In Go, the type is `*T`
+
+T is the type of value pointed to by the pointer.
+
+Eg:
+
+```go
+*int
+```
+
+###### Quotation
+
+Dereference refers to accessing the value of the variable pointed by the pointer through the pointer.
+
+*
+
+>p is the pointer pointed to int value
+>
+>*p is the int value
+
+Eample:
+
+```go
+package main
+
+import "fmt"
+
+function main() {
+	var a int = 10 // Define an integer variable a
+	var p *int //Define a pointer p pointing to an integer a
+	
+	
+	p = & a //Point pointer p to the address of variable a
+	
+	fmt.Println("the address of a is ", p)
+	fmt.Println("the p pinter pointed to value: ", *p)
+
+}
+```
+
+
+
+Example2:
+
+```go
+package main
+
+import "fmt"
+
+func doubleValue(x *int) {
+	*x = *x * 2; //Modify the original value through a pointer
+}
+
+
+func main() {
+  
+  value := 5
+  doubleValue(&value) // passing  Address of the value
+  fmt.Println("Value becomes:", value)
+}
+```
+
+Example3:
+
+```go
+package main
+	
+import "fmt"
+
+
+type Point struct {
+  X, Y int
+}
+
+func main() {
+  p1 := &Pint{1, 2}
+  fmt.Println("Point:" *p1)
+ 
+   p1.X = 3           //modifying structural fields through pointers
+   p1.Y = 4
+   fmt.Println("Updated Point:", *p1)
+}
+
+```
+
+## 2023.12.18
+
+##### interface 接口 
+
+interface is a special type declaration：
+
+specifies a set of methods but does not implement them.
+
+Example:
+
+```go
+type Speaker interface {
+	Speak() string
+}
+```
+
+> Speaker is an interface that defines a method called Speak, which has no parameters and returns a value of type string.
+
+###### Implicit implementation
+
+In Go, a type does not need to explicitly declare that it implements a certain interface.
+
+Example:
+
+define Aminal interface
+
+```go
+type Animal interface {
+    Speak() string
+}
+```
+
+define Dog 
+
+```go
+type Dog struct{}
+
+func (d Dog) Speak() string {
+	return "Woof!“
+}
+```
+
+> In Go, methods are usually **defined separately outside the structure definition**,
+>
+>  but they are still associated with specific structure types.
+
+>  Even if the definition of the Speak() method is outside the Dog structure, it is still part of the Dog type because its receiver is of the Dog type (Func (d Dog)). In this way, any instance of Dog type can call the Speak() method.
+
+##### polymorphism
+
+How to use interfaces to achieve polymorphism
+
+Example:
+
+1. build a Write base class
+
+```go
+type Writer interface {
+	Write(message string) error
+}
+```
+
+2. build two sub interface i
+
+## 2023.12.19 
 
 ##### 函数
